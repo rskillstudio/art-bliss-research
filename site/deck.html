@@ -399,6 +399,60 @@ tbody tr.total td {
   .slide .slide-body { flex: 1; overflow: auto; }
 }
 
+.cover-actions {
+  position: absolute;
+  top: var(--slide-pad);
+  right: var(--slide-pad);
+  z-index: 2;
+}
+.cover .cover-actions .btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.15rem;
+  background: var(--gold);
+  color: var(--forest);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.cover .cover-actions .btn-download:hover {
+  background: var(--gold-bright);
+  text-decoration: none;
+}
+.cover { position: relative; }
+
+.fab-download {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--gold);
+  color: var(--forest);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.02em;
+}
+.fab-download:hover {
+  background: var(--gold-bright);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.fab-download svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
 .print-bar {
   position: fixed;
   top: 0;
@@ -471,7 +525,7 @@ tbody tr.total td {
     print-color-adjust: exact !important;
   }
 
-  .print-bar { display: none !important; }
+  .print-bar, .fab-download, .cover-actions { display: none !important; }
 
   .deck {
     max-width: none;
@@ -548,32 +602,20 @@ tbody tr.total td {
 <div class="print-bar" aria-label="Export controls">
   <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape slides</span>
   <div class="print-bar-actions">
-    <a class="btn btn-primary" id="download-pdf" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <a class="btn btn-primary" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
     <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
   </div>
 </div>
-<script>
-(function () {
-  var link = document.getElementById("download-pdf");
-  if (!link) return;
-  fetch("artbliss-investor-deck.pdf", { method: "HEAD" }).catch(function () {
-    link.textContent = "Generating PDF…";
-    link.removeAttribute("href");
-    link.removeAttribute("download");
-  }).then(function (res) {
-    if (!res || !res.ok) {
-      link.textContent = "PDF unavailable — use Print";
-      link.removeAttribute("href");
-      link.removeAttribute("download");
-      link.classList.remove("btn-primary");
-      link.classList.add("btn-secondary");
-    }
-  });
-})();
-</script>
+<a class="fab-download" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf" aria-label="Download deck as PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l4-4m-4 4L8 11"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+  Download PDF
+</a>
 <div class="deck">
 
 <header class="cover">
+  <div class="cover-actions">
+    <a class="btn-download" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">↓ Download PDF</a>
+  </div>
   <div class="brand-row">
     <div class="brand-mark">A</div>
     <div class="brand-label">Roam Hospitality · Live Intelligence</div>

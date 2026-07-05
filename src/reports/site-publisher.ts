@@ -75,6 +75,11 @@ ul li{margin:.35rem 0}
   <p class="lead">Updated underwriting vs the June 2026 Roam Hospitality deck — Stevenson cabin portfolio with live market feed.</p>
   <p class="updated">Last refreshed: <strong>${ts}</strong></p>
 
+  <div class="download-banner">
+    <a class="btn btn-primary btn-lg" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">↓ Download Investor Deck (PDF)</a>
+    <span class="download-hint">16:9 landscape · ${ts}</span>
+  </div>
+
   <div class="actions">
     <a class="btn btn-primary" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
     <a class="btn btn-secondary" href="deck.html">Open Full Investor Deck</a>
