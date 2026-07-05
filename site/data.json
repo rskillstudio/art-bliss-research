@@ -1,69 +1,69 @@
 {
-  "updated": "2026-07-05T03:31:13.549Z",
+  "updated": "2026-07-05T04:12:30.272Z",
   "site_url": "https://mindmakina.com/artbliss-deck",
   "artbliss_i": {
     "phase": "Artbliss I (4 units, in operation)",
     "units": 4,
     "deck_room_revenue": 329303,
     "deck_noi": 149749,
-    "feed_projected_room_revenue": 395670,
-    "feed_projected_noi": 180030,
-    "revenue_delta": 66367,
-    "revenue_delta_pct": 20.2,
-    "assumptions": "Feed cabin occ 78.1% applied to deck base ADR $347; same 45.5% NOI margin"
+    "feed_projected_room_revenue": 373379,
+    "feed_projected_noi": 169887,
+    "revenue_delta": 44076,
+    "revenue_delta_pct": 13.4,
+    "assumptions": "Feed cabin occ 73.7% applied to deck base ADR $347; same 45.5% NOI margin"
   },
   "artbliss_ii": {
     "phase": "Artbliss II (10 units, full buildout)",
     "units": 10,
     "deck_room_revenue": 823258,
     "deck_noi": 374351,
-    "feed_projected_room_revenue": 989176,
-    "feed_projected_noi": 450075,
-    "revenue_delta": 165918,
-    "revenue_delta_pct": 20.2,
+    "feed_projected_room_revenue": 933447,
+    "feed_projected_noi": 424719,
+    "revenue_delta": 110189,
+    "revenue_delta_pct": 13.4,
     "assumptions": "Same unit economic as Artbliss I, scaled to 10 units"
   },
   "seasonal_outlook": {
     "deck_annual_occ_pct": 65.12904109589041,
     "deck_annual_adr": 347.85088822611374,
-    "feed_snapshot_occ_pct": 78.1,
-    "feed_adjusted_occ_pct": 77.59289878378779,
-    "feed_adjusted_adr": 347.76495342180624,
-    "occ_scale_factor": 1.1991578362870758,
+    "feed_snapshot_occ_pct": 73.7,
+    "feed_adjusted_occ_pct": 73.70000000000002,
+    "feed_adjusted_adr": 347.8508882261138,
+    "occ_scale_factor": 1.1315996483272408,
     "bands": [
       {
         "name": "Peak",
         "months": 3,
         "deck_occ_pct": 80.9,
-        "feed_adjusted_occ_pct": 95,
+        "feed_adjusted_occ_pct": 91.54641154967379,
         "adr": 361
       },
       {
         "name": "Shoulder",
         "months": 6,
         "deck_occ_pct": 70.1,
-        "feed_adjusted_occ_pct": 84.06096432372401,
+        "feed_adjusted_occ_pct": 79.32513534773958,
         "adr": 341
       },
       {
         "name": "Off-Peak",
         "months": 3,
         "deck_occ_pct": 38.9,
-        "feed_adjusted_occ_pct": 46.64723983156725,
+        "feed_adjusted_occ_pct": 44.019226319929665,
         "adr": 345
       }
     ],
     "artbliss_i": {
       "deck_base_room_revenue": 329303,
-      "feed_snapshot_room_revenue": 395670,
-      "feed_seasonal_room_revenue": 393968,
+      "feed_snapshot_room_revenue": 373379,
+      "feed_seasonal_room_revenue": 374295,
       "deck_base_noi": 149833,
-      "feed_snapshot_noi": 180030,
-      "feed_seasonal_noi": 179255
+      "feed_snapshot_noi": 169887,
+      "feed_seasonal_noi": 170304
     },
     "artbliss_ii": {
-      "feed_seasonal_room_revenue": 984919,
-      "feed_seasonal_noi": 448138
+      "feed_seasonal_room_revenue": 935736,
+      "feed_seasonal_noi": 425760
     },
     "methodology": "Deck peak/shoulder/off-peak bands from June 2026 underwriting; feed snapshot occ scales all bands proportionally; revenue uses month-level occ × ADR (not flat $347)."
   },
@@ -71,15 +71,15 @@
     {
       "metric": "CoStar Hotel Occupancy (Stevenson submarket)",
       "deck_value": "66.3%",
-      "feed_value": "77.5%",
-      "delta": "+11.2 pp",
+      "feed_value": "73.0%",
+      "delta": "+6.7 pp",
       "assessment": "Feed shows stronger hotel demand than CoStar TTM"
     },
     {
       "metric": "STR/Cabin Occupancy (live Airbnb + comp discovery)",
       "deck_value": "65% (deck AirDNA 12-listing anchor)",
-      "feed_value": "78.1%",
-      "delta": "+13.1 pp",
+      "feed_value": "73.7%",
+      "delta": "+8.7 pp",
       "assessment": "Feed cabin occ above deck base — upside to room revenue if sustained"
     },
     {
@@ -92,14 +92,14 @@
     {
       "metric": "AirDNA RevPAR (12-listing comp, TTM)",
       "deck_value": "$197",
-      "feed_value": "$271",
-      "delta": "$74",
+      "feed_value": "$256",
+      "delta": "$59",
       "assessment": "RevPAR derived from feed occ x deck ADR"
     },
     {
       "metric": "Peak Season Occ (Jun–Aug, deck)",
       "deck_value": "80.9%",
-      "feed_value": "78.1% (blended feed proxy)",
+      "feed_value": "73.7% (blended feed proxy)",
       "delta": "—",
       "assessment": "Feed is 30-day snapshot; deck peak is 80.9%"
     },
@@ -113,7 +113,7 @@
     {
       "metric": "Tier B Hotel Occ (Gorge extended)",
       "deck_value": "Not in deck (visitor fill only)",
-      "feed_value": "76.8%",
+      "feed_value": "71.0%",
       "delta": "—",
       "assessment": "Extended radius for 2.9M visitor reconciliation"
     }
@@ -123,7 +123,7 @@
     "Occupancy is live from Airbnb weekly search, hotel pages, recreation.gov, and OR parks — not simulated.",
     "Partial live ADR: 1 comp(s) from Airbnb (e.g. $519). Artbliss revenue bridge still uses deck $347 ADR.",
     "Visitor segmentation is new vs deck — deck did not parse 2.9M into lodging buckets.",
-    "Full gorge inventory counts needed to reduce 74.6% day-tripper residual.",
+    "Full gorge inventory counts needed to reduce 88.9% day-tripper residual.",
     "Single ~30-day snapshot — deck benchmarks are trailing twelve months.",
     "Seasonal case scales deck peak/shoulder/off-peak shape by live snapshot occ — not yet validated with month-by-month feed data."
   ]

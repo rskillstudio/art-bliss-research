@@ -799,14 +799,156 @@ tbody tr.total td {
   opacity: 0.7;
 }
 
+/* Screen: stacked 16:9 slide frames */
+@media screen {
+  body { padding-top: 3.25rem; }
+  .deck {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .cover,
+  .slide {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    min-height: unset;
+    border-radius: 6px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(196, 165, 116, 0.2);
+    overflow: hidden;
+  }
+  .cover {
+    justify-content: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+  .slide {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+  .slide .slide-body { flex: 1; overflow: auto; }
+}
+
+.print-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 1.25rem;
+  background: rgba(26, 46, 34, 0.96);
+  border-bottom: 1px solid rgba(196, 165, 116, 0.45);
+  font-size: 0.8rem;
+  color: var(--cream-muted);
+  backdrop-filter: blur(8px);
+}
+.print-bar strong { color: var(--cream); }
+.print-bar button {
+  background: var(--gold);
+  color: var(--forest);
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.print-bar button:hover { background: var(--gold-bright); }
+
+/* Print / PDF: one landscape slide per page (16:9 widescreen) */
+@page {
+  size: 13.333in 7.5in landscape;
+  margin: 0;
+}
+
 @media print {
-  body { background: white; color: #1a2e22; }
-  .cover { min-height: auto; page-break-after: always; }
-  .slide { page-break-inside: avoid; border-color: #ddd; }
-  .slide:nth-child(even) { background: #f9f7f4; }
-  .section-num, .brand-label, thead th { color: #8a7348; }
-  .col-live, .kpi .num, tbody tr.primary td { color: #2d6a4f; }
-  tbody td, .bullet-list li, .note { color: #333; }
+  html, body {
+    width: 13.333in;
+    margin: 0;
+    padding: 0;
+    background: var(--forest) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-bar { display: none !important; }
+
+  .deck {
+    max-width: none;
+    width: 13.333in;
+    display: block;
+    padding: 0;
+    gap: 0;
+  }
+
+  .cover,
+  .slide {
+    width: 13.333in;
+    height: 7.5in;
+    min-height: 7.5in;
+    max-height: 7.5in;
+    padding: 0.45in 0.55in;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: hidden;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--forest) !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide:nth-child(even) {
+    background: var(--forest-mid) !important;
+  }
+
+  .footer { display: none; }
+
+  /* Compact slide typography */
+  html { font-size: 10.5pt; }
+  .brand-row { margin-bottom: 0.65rem; }
+  .brand-mark { width: 36px; height: 36px; font-size: 1.1rem; }
+  .cover h1 { font-size: 2.1rem; margin-bottom: 0.25rem; }
+  .cover .subtitle { font-size: 0.88rem; margin-bottom: 0.85rem; max-width: 32rem; }
+  .meta-grid { max-width: 100%; }
+  .meta-cell { padding: 0.55rem 0.65rem; }
+  .meta-cell .value { font-size: 0.78rem; }
+  .kpi-strip { margin-top: 0.55rem; gap: 0.55rem; }
+  .kpi .num { font-size: 1.25rem; }
+  .kpi .lbl { font-size: 0.58rem; }
+  .section-head { margin-bottom: 0.45rem; gap: 0.75rem; }
+  .section-num { font-size: 1.85rem; }
+  .section-head h2 { font-size: 1.2rem; }
+  .subhead { font-size: 0.95rem; margin: 0.5rem 0 0.35rem; }
+  .two-col { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+  .card { padding: 0.45rem 0.55rem; }
+  .card h3 { font-size: 0.82rem; margin-bottom: 0.35rem; }
+  .table-wrap { margin: 0.25rem 0; overflow: hidden; }
+  table { font-size: 0.68rem; }
+  thead th { padding: 0.28rem 0.4rem; font-size: 0.58rem; }
+  tbody td { padding: 0.28rem 0.4rem; }
+  .bullet-list { margin: 0.35rem 0; }
+  .bullet-list li { font-size: 0.72rem; padding: 0.2rem 0 0.2rem 0.9rem; }
+  .bullet-list li::before { top: 0.55rem; width: 4px; height: 4px; }
+  .discovery-list li { font-size: 0.62rem; padding: 0.15rem 0; }
+  .note { font-size: 0.65rem; margin-top: 0.35rem; }
+  .strengths { gap: 0.35rem; margin-top: 0.45rem; }
+  .strength-item { padding: 0.35rem 0.5rem; font-size: 0.68rem; gap: 0.5rem; }
+  .strength-item .idx { font-size: 1rem; }
+  a { color: var(--gold-bright) !important; text-decoration: none; }
+  tbody tr:hover { background: transparent; }
 }
 `;
 
@@ -930,6 +1072,10 @@ export function renderInvestorDeckHtml(d: InvestorDeckData): string {
 <style>${HTML_STYLES}</style>
 </head>
 <body>
+<div class="print-bar" aria-label="Export controls">
+  <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape · Use <strong>Export PDF</strong> or Print → Save as PDF (margins: none, background graphics: on)</span>
+  <button type="button" onclick="window.print()">Export PDF</button>
+</div>
 <div class="deck">
 
 <header class="cover">
