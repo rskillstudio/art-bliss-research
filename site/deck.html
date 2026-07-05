@@ -417,18 +417,43 @@ tbody tr.total td {
   backdrop-filter: blur(8px);
 }
 .print-bar strong { color: var(--cream); }
-.print-bar button {
-  background: var(--gold);
-  color: var(--forest);
-  border: none;
+.print-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.print-bar .btn {
+  display: inline-flex;
+  align-items: center;
   padding: 0.45rem 1.1rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.8rem;
   white-space: nowrap;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
 }
-.print-bar button:hover { background: var(--gold-bright); }
+.print-bar .btn-primary {
+  background: var(--gold);
+  color: var(--forest);
+}
+.print-bar .btn-primary:hover { background: var(--gold-bright); }
+.print-bar .btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(196, 165, 116, 0.45);
+}
+.print-bar .btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+.print-bar .btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
 
 /* Print / PDF: one landscape slide per page (16:9 widescreen) */
 @page {
@@ -521,9 +546,31 @@ tbody tr.total td {
 </head>
 <body>
 <div class="print-bar" aria-label="Export controls">
-  <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape · Use <strong>Export PDF</strong> or Print → Save as PDF (margins: none, background graphics: on)</span>
-  <button type="button" onclick="window.print()">Export PDF</button>
+  <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape slides</span>
+  <div class="print-bar-actions">
+    <a class="btn btn-primary" id="download-pdf" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
+  </div>
 </div>
+<script>
+(function () {
+  var link = document.getElementById("download-pdf");
+  if (!link) return;
+  fetch("artbliss-investor-deck.pdf", { method: "HEAD" }).catch(function () {
+    link.textContent = "Generating PDF…";
+    link.removeAttribute("href");
+    link.removeAttribute("download");
+  }).then(function (res) {
+    if (!res || !res.ok) {
+      link.textContent = "PDF unavailable — use Print";
+      link.removeAttribute("href");
+      link.removeAttribute("download");
+      link.classList.remove("btn-primary");
+      link.classList.add("btn-secondary");
+    }
+  });
+})();
+</script>
 <div class="deck">
 
 <header class="cover">
@@ -541,10 +588,10 @@ tbody tr.total td {
     <div class="meta-cell"><div class="label">Intelligence</div><div class="value">Airbnb · Comps · CoStar · recreation.gov</div></div>
   </div>
   <div class="kpi-strip">
-    <div class="kpi"><div class="num">$169,887</div><div class="lbl">Artbliss I Y1 NOI</div></div>
-    <div class="kpi"><div class="num">73.7%</div><div class="lbl">Live Cabin Occ</div></div>
-    <div class="kpi"><div class="num">+13.4%</div><div class="lbl">Rev vs Deck Base</div></div>
-    <div class="kpi"><div class="num">$256</div><div class="lbl">Implied RevPAR</div></div>
+    <div class="kpi"><div class="num">$180,030</div><div class="lbl">Artbliss I Y1 NOI</div></div>
+    <div class="kpi"><div class="num">78.1%</div><div class="lbl">Live Cabin Occ</div></div>
+    <div class="kpi"><div class="num">+20.2%</div><div class="lbl">Rev vs Deck Base</div></div>
+    <div class="kpi"><div class="num">$271</div><div class="lbl">Implied RevPAR</div></div>
   </div>
 </header>
 
@@ -555,11 +602,11 @@ tbody tr.total td {
       <h3>Artbliss I — In Operation (4 units)</h3>
       <div class="table-wrap"><table>
 <thead><tr><th>Metric</th><th class="num">Original Deck</th><th class="num">Feed-Anchored (Live)</th></tr></thead>
-<tbody><tr><td>Y1 Room Revenue</td><td class="num">$329,303</td><td class="num col-live">$373,379</td></tr>
-<tr><td>Y1 NOI</td><td class="num">$149,749</td><td class="num col-live">$169,887</td></tr>
+<tbody><tr><td>Y1 Room Revenue</td><td class="num">$329,303</td><td class="num col-live">$395,670</td></tr>
+<tr><td>Y1 NOI</td><td class="num">$149,749</td><td class="num col-live">$180,030</td></tr>
 <tr><td>NOI Margin</td><td class="num">45.5%</td><td class="num col-live">45.5%</td></tr></tbody></table></div>
       <ul class="bullet-list">
-        <li>Live Stevenson cabin occupancy <strong>73.7%</strong> vs deck base <strong>65.0%</strong> (+8.7 pp)</li>
+        <li>Live Stevenson cabin occupancy <strong>78.1%</strong> vs deck base <strong>65.0%</strong> (+13.1 pp)</li>
         <li>Cash-flowing today with established guest base and 5-star reviews</li>
       </ul>
     </div>
@@ -567,26 +614,26 @@ tbody tr.total td {
       <h3>Artbliss II — Full Buildout (10 units)</h3>
       <div class="table-wrap"><table>
 <thead><tr><th>Metric</th><th class="num">Original Deck</th><th class="num">Feed-Anchored (Live)</th></tr></thead>
-<tbody><tr><td>Y1 Room Revenue</td><td class="num">$823,258</td><td class="num col-live">$933,447</td></tr>
-<tr><td>Y1 NOI</td><td class="num">$374,351</td><td class="num col-live">$424,719</td></tr></tbody></table></div>
+<tbody><tr><td>Y1 Room Revenue</td><td class="num">$823,258</td><td class="num col-live">$989,176</td></tr>
+<tr><td>Y1 NOI</td><td class="num">$374,351</td><td class="num col-live">$450,075</td></tr></tbody></table></div>
     </div>
   </div>
 </section>
 
 <section class="slide" id="s02">
   <div class="section-head"><span class="section-num">02</span><h2>Market — Live Intelligence</h2></div>
-  <div class="table-wrap"><table><thead><tr><th>Metric</th><th class="num">Prior Deck</th><th class="num">Live Feed (Tier A)</th></tr></thead><tbody><tr><td>Hotel Occupancy</td><td class="num">CoStar 66.3% TTM</td><td class="num"><span class="col-live">73.0%</span></td></tr>
-<tr><td>Cabin Occupancy</td><td class="num">AirDNA anchor 65.0%</td><td class="num"><span class="col-live">73.7%</span></td></tr>
-<tr><td>STR Occupancy</td><td class="num">—</td><td class="num"><span class="col-live">74.6%</span> (148 listings)</td></tr>
-<tr><td>Implied RevPAR</td><td class="num">$197</td><td class="num"><span class="col-live">$256</span></td></tr>
-<tr><td>Peak Season (deck ref.)</td><td class="num">80.9% occ / $361 ADR</td><td class="num">Live snapshot ~73.7%</td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Metric</th><th class="num">Prior Deck</th><th class="num">Live Feed (Tier A)</th></tr></thead><tbody><tr><td>Hotel Occupancy</td><td class="num">CoStar 66.3% TTM</td><td class="num"><span class="col-live">77.5%</span></td></tr>
+<tr><td>Cabin Occupancy</td><td class="num">AirDNA anchor 65.0%</td><td class="num"><span class="col-live">78.1%</span></td></tr>
+<tr><td>STR Occupancy</td><td class="num">—</td><td class="num"><span class="col-live">75.9%</span> (158 listings)</td></tr>
+<tr><td>Implied RevPAR</td><td class="num">$197</td><td class="num"><span class="col-live">$271</span></td></tr>
+<tr><td>Peak Season (deck ref.)</td><td class="num">80.9% occ / $361 ADR</td><td class="num">Live snapshot ~78.1%</td></tr></tbody></table></div>
 </section>
 
 <section class="slide" id="s03">
   <div class="section-head"><span class="section-num">03</span><h2>Comp Properties — Auto-Discovered</h2></div>
-  <div class="table-wrap"><table><thead><tr><th>Property</th><th class="num">Units</th><th class="num">Deck ADR</th><th class="num">Live ADR</th><th class="num">Source</th><th class="num">Rev/Unit</th></tr></thead><tbody><tr><td>Skamania Lodge — Treehouses</td><td class="num">4</td><td class="num">$492</td><td class="num"><span class="col-live">$519</span></td><td class="num"><span class="badge">Airbnb live</span></td><td class="num">$132,350</td></tr>
-<tr><td>Wilder &amp; Pine — Cabins</td><td class="num">9</td><td class="num">$391</td><td class="num"><span class="col-live">$391</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$105,181</td></tr>
-<tr><td>Tenzen Springs — Cabins</td><td class="num">9</td><td class="num">$332</td><td class="num"><span class="col-live">$332</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$89,310</td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Property</th><th class="num">Units</th><th class="num">Deck ADR</th><th class="num">Live ADR</th><th class="num">Source</th><th class="num">Rev/Unit</th></tr></thead><tbody><tr><td>Skamania Lodge — Treehouses</td><td class="num">4</td><td class="num">$492</td><td class="num"><span class="col-live">$519</span></td><td class="num"><span class="badge">Airbnb live</span></td><td class="num">$140,252</td></tr>
+<tr><td>Wilder &amp; Pine — Cabins</td><td class="num">9</td><td class="num">$391</td><td class="num"><span class="col-live">$391</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$111,460</td></tr>
+<tr><td>Tenzen Springs — Cabins</td><td class="num">9</td><td class="num">$332</td><td class="num"><span class="col-live">$332</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$94,642</td></tr></tbody></table></div>
   <ul class="discovery-list"><li>Skamania Lodge — Treehouses: Airbnb #23005001 &quot;Treehouse in Stevenson&quot; @ $519/night</li>
 <li>Wilder & Pine — Cabins: <a href="https://www.wilderandpine.com/cabins" target="_blank" rel="noopener">https://www.wilderandpine.com/cabins</a></li>
 <li>Tenzen Springs — Cabins: <a href="https://www.tenzensprings.com/" target="_blank" rel="noopener">https://www.tenzensprings.com/</a></li></ul>
@@ -597,29 +644,29 @@ tbody tr.total td {
   <div class="table-wrap"><table><thead><tr><th>Scenario</th><th class="num">Occ</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Conservative (deck)</td><td class="num">58.0%</td><td class="num">$315</td><td class="num">$266,742</td><td class="num">$121,368</td></tr>
 <tr><td>Base (deck)</td><td class="num">65.0%</td><td class="num">$347</td><td class="num">$329,303</td><td class="num">$149,833</td></tr>
 <tr><td>Upside (deck)</td><td class="num">70.0%</td><td class="num">$375</td><td class="num">$383,250</td><td class="num">$174,379</td></tr>
-<tr class="primary"><td><strong>Feed-Anchored Base ← Primary</strong></td><td class="num"><strong>73.7%</strong></td><td class="num"><strong>$347</strong></td><td class="num"><strong>$373,379</strong></td><td class="num"><strong>$169,887</strong></td></tr>
-<tr><td>Feed Upside</td><td class="num">73.7%</td><td class="num">$375</td><td class="num">$403,508</td><td class="num">$183,596</td></tr></tbody></table></div>
+<tr class="primary"><td><strong>Feed-Anchored Base ← Primary</strong></td><td class="num"><strong>78.1%</strong></td><td class="num"><strong>$347</strong></td><td class="num"><strong>$395,670</strong></td><td class="num"><strong>$180,030</strong></td></tr>
+<tr><td>Feed Upside</td><td class="num">78.1%</td><td class="num">$375</td><td class="num">$427,598</td><td class="num">$194,557</td></tr></tbody></table></div>
 </section>
 
 <section class="slide" id="s04b">
   <div class="section-head"><span class="section-num">04b</span><h2>Seasonally Adjusted Outlook</h2></div>
   <p class="note" style="margin-bottom:1.25rem;font-style:normal;">Recommended annual case — deck peak / shoulder / off-peak shape scaled to live occupancy, month-level ADR.</p>
   <div class="table-wrap"><table><thead><tr><th>Case</th><th class="num">Blended Occ</th><th class="num">Blended ADR</th><th class="num">Artbliss I NOI</th></tr></thead><tbody><tr><td>Deck base (flat)</td><td class="num">65.1%</td><td class="num">$348</td><td class="num">$149,833</td></tr>
-<tr><td>Feed snapshot (flat $347)</td><td class="num">73.7%</td><td class="num">$347</td><td class="num">$169,887</td></tr>
-<tr><td>Feed seasonal ← recommended</td><td class="num"><strong>73.7%</strong></td><td class="num"><strong>$348</strong></td><td class="num"><strong>$170,304</strong></td></tr></tbody></table></div>
-  <div class="table-wrap"><table><thead><tr><th>Season</th><th class="num">Months</th><th class="num">Feed-Adj Occ</th><th class="num">ADR</th></tr></thead><tbody><tr><td>Peak</td><td class="num">3</td><td class="num">91.5%</td><td class="num">$361</td></tr>
-<tr><td>Shoulder</td><td class="num">6</td><td class="num">79.3%</td><td class="num">$341</td></tr>
-<tr><td>Off-Peak</td><td class="num">3</td><td class="num">44.0%</td><td class="num">$345</td></tr></tbody></table></div>
+<tr><td>Feed snapshot (flat $347)</td><td class="num">78.1%</td><td class="num">$347</td><td class="num">$180,030</td></tr>
+<tr><td>Feed seasonal ← recommended</td><td class="num"><strong>77.6%</strong></td><td class="num"><strong>$348</strong></td><td class="num"><strong>$179,255</strong></td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Season</th><th class="num">Months</th><th class="num">Feed-Adj Occ</th><th class="num">ADR</th></tr></thead><tbody><tr><td>Peak</td><td class="num">3</td><td class="num">95.0%</td><td class="num">$361</td></tr>
+<tr><td>Shoulder</td><td class="num">6</td><td class="num">84.1%</td><td class="num">$341</td></tr>
+<tr><td>Off-Peak</td><td class="num">3</td><td class="num">46.6%</td><td class="num">$345</td></tr></tbody></table></div>
   <div class="kpi-strip" style="margin-top:1.5rem">
-    <div class="kpi"><div class="num">$425,760</div><div class="lbl">Artbliss II Seasonal NOI</div></div>
+    <div class="kpi"><div class="num">$448,138</div><div class="lbl">Artbliss II Seasonal NOI</div></div>
   </div>
 </section>
 
 <section class="slide" id="s05">
   <div class="section-head"><span class="section-num">05</span><h2>Artbliss I Stabilized Y1</h2></div>
   <div class="kpi-strip">
-    <div class="kpi"><div class="num">$373,379</div><div class="lbl">Room Revenue (+13.4% vs deck)</div></div>
-    <div class="kpi"><div class="num">$169,887</div><div class="lbl">Net Operating Income</div></div>
+    <div class="kpi"><div class="num">$395,670</div><div class="lbl">Room Revenue (+20.2% vs deck)</div></div>
+    <div class="kpi"><div class="num">$180,030</div><div class="lbl">Net Operating Income</div></div>
     <div class="kpi"><div class="num">45.5%</div><div class="lbl">NOI Margin</div></div>
   </div>
 </section>
@@ -627,49 +674,49 @@ tbody tr.total td {
 <section class="slide" id="s06">
   <div class="section-head"><span class="section-num">06</span><h2>Artbliss II Stabilized Y1</h2></div>
   <div class="kpi-strip">
-    <div class="kpi"><div class="num">$933,447</div><div class="lbl">Room Revenue</div></div>
-    <div class="kpi"><div class="num">$424,719</div><div class="lbl">Net Operating Income</div></div>
+    <div class="kpi"><div class="num">$989,176</div><div class="lbl">Room Revenue</div></div>
+    <div class="kpi"><div class="num">$450,075</div><div class="lbl">Net Operating Income</div></div>
   </div>
 </section>
 
 <section class="slide" id="s07">
   <div class="section-head"><span class="section-num">07</span><h2>5-Year Horizon — Artbliss I</h2></div>
-  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$373,379</td><td class="num">$169,887</td></tr>
-<tr><td>Y2</td><td class="num">$361</td><td class="num">$388,443</td><td class="num">$176,742</td></tr>
-<tr><td>Y3</td><td class="num">$375</td><td class="num">$403,508</td><td class="num">$183,596</td></tr>
-<tr><td>Y4</td><td class="num">$390</td><td class="num">$419,648</td><td class="num">$190,940</td></tr>
-<tr><td>Y5</td><td class="num">$406</td><td class="num">$436,864</td><td class="num">$198,773</td></tr>
-<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$919,938</strong></td></tr></tbody></table></div>
-  <p class="note">4% annual ADR growth at feed-anchored 73.7% occupancy.</p>
+  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$395,670</td><td class="num">$180,030</td></tr>
+<tr><td>Y2</td><td class="num">$361</td><td class="num">$411,634</td><td class="num">$187,293</td></tr>
+<tr><td>Y3</td><td class="num">$375</td><td class="num">$427,598</td><td class="num">$194,557</td></tr>
+<tr><td>Y4</td><td class="num">$390</td><td class="num">$444,701</td><td class="num">$202,339</td></tr>
+<tr><td>Y5</td><td class="num">$406</td><td class="num">$462,946</td><td class="num">$210,640</td></tr>
+<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$974,860</strong></td></tr></tbody></table></div>
+  <p class="note">4% annual ADR growth at feed-anchored 78.1% occupancy.</p>
 </section>
 
 <section class="slide" id="s08">
   <div class="section-head"><span class="section-num">08</span><h2>5-Year Horizon — Artbliss II</h2></div>
-  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$933,447</td><td class="num">$424,719</td></tr>
-<tr><td>Y2</td><td class="num">$361</td><td class="num">$971,108</td><td class="num">$441,854</td></tr>
-<tr><td>Y3</td><td class="num">$375</td><td class="num">$1,008,769</td><td class="num">$458,990</td></tr>
-<tr><td>Y4</td><td class="num">$390</td><td class="num">$1,049,120</td><td class="num">$477,349</td></tr>
-<tr><td>Y5</td><td class="num">$406</td><td class="num">$1,092,160</td><td class="num">$496,933</td></tr>
-<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$2,299,845</strong></td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$989,176</td><td class="num">$450,075</td></tr>
+<tr><td>Y2</td><td class="num">$361</td><td class="num">$1,029,085</td><td class="num">$468,234</td></tr>
+<tr><td>Y3</td><td class="num">$375</td><td class="num">$1,068,994</td><td class="num">$486,392</td></tr>
+<tr><td>Y4</td><td class="num">$390</td><td class="num">$1,111,754</td><td class="num">$505,848</td></tr>
+<tr><td>Y5</td><td class="num">$406</td><td class="num">$1,157,364</td><td class="num">$526,601</td></tr>
+<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$2,437,149</strong></td></tr></tbody></table></div>
 </section>
 
 <section class="slide" id="s09">
   <div class="section-head"><span class="section-num">09</span><h2>Gorge Visitor Segmentation</h2></div>
   <p class="subhead">Baseline: 2,900,000 annual visitors</p>
-  <div class="table-wrap"><table><thead><tr><th>Segment</th><th class="num">Tier</th><th class="num">Visitors</th><th class="num">Share</th></tr></thead><tbody><tr><td>Cabin</td><td class="num">A</td><td class="num">12,264</td><td class="num">0.4%</td></tr>
-<tr><td>STR</td><td class="num">A</td><td class="num">96,710</td><td class="num">3.3%</td></tr>
-<tr><td>Hotel</td><td class="num">A</td><td class="num">51,158</td><td class="num">1.8%</td></tr>
-<tr><td>Campsite</td><td class="num">A</td><td class="num">15,914</td><td class="num">0.5%</td></tr>
+  <div class="table-wrap"><table><thead><tr><th>Segment</th><th class="num">Tier</th><th class="num">Visitors</th><th class="num">Share</th></tr></thead><tbody><tr><td>Cabin</td><td class="num">A</td><td class="num">47,021</td><td class="num">1.6%</td></tr>
+<tr><td>STR</td><td class="num">A</td><td class="num">122,923</td><td class="num">4.2%</td></tr>
+<tr><td>Hotel</td><td class="num">A</td><td class="num">105,177</td><td class="num">3.6%</td></tr>
+<tr><td>Campsite</td><td class="num">A</td><td class="num">40,550</td><td class="num">1.4%</td></tr>
 <tr><td>STR</td><td class="num">B</td><td class="num">64,094</td><td class="num">2.2%</td></tr>
-<tr><td>Hotel</td><td class="num">B</td><td class="num">62,225</td><td class="num">2.1%</td></tr>
-<tr><td>Campsite</td><td class="num">B</td><td class="num">20,148</td><td class="num">0.7%</td></tr>
-<tr><td>DayTripper</td><td class="num">residual</td><td class="num">2,577,487</td><td class="num">88.9%</td></tr></tbody></table></div>
+<tr><td>Hotel</td><td class="num">B</td><td class="num">182,208</td><td class="num">6.3%</td></tr>
+<tr><td>Campsite</td><td class="num">B</td><td class="num">180,192</td><td class="num">6.2%</td></tr>
+<tr><td>DayTripper</td><td class="num">residual</td><td class="num">2,157,835</td><td class="num">74.4%</td></tr></tbody></table></div>
   <p class="note">Preliminary — expand inventory tracking to tighten day-tripper estimate.</p>
 </section>
 
 <section class="slide" id="s10">
   <div class="section-head"><span class="section-num">10</span><h2>OpEx — Deck Structure, Feed Revenue</h2></div>
-  <p style="color:var(--cream-muted);font-size:0.95rem;max-width:40rem;">Variable lines scale with feed revenue ($373,379 Y1 Artbliss I). Same drivers as original deck: 10% management, 5% marketing, cleaning salary/turn model, flat tax and insurance.</p>
+  <p style="color:var(--cream-muted);font-size:0.95rem;max-width:40rem;">Variable lines scale with feed revenue ($395,670 Y1 Artbliss I). Same drivers as original deck: 10% management, 5% marketing, cleaning salary/turn model, flat tax and insurance.</p>
 </section>
 
 <section class="slide" id="s11">
@@ -683,14 +730,14 @@ tbody tr.total td {
 
 <section class="slide" id="s12">
   <div class="section-head"><span class="section-num">12</span><h2>Summary</h2></div>
-  <div class="table-wrap"><table><thead><tr><th></th><th class="num">Artbliss I (4)</th><th class="num">Artbliss II (10)</th></tr></thead><tbody><tr><td>Y1 NOI (Feed)</td><td class="num"><span class="col-live">$169,887</span></td><td class="num"><span class="col-live">$424,719</span></td></tr>
-<tr><td>Y5 NOI (proj.)</td><td class="num">$198,773</td><td class="num">$496,933</td></tr>
-<tr><td>5-Yr Cumulative NOI</td><td class="num"><strong>$919,938</strong></td><td class="num"><strong>$2,299,845</strong></td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th></th><th class="num">Artbliss I (4)</th><th class="num">Artbliss II (10)</th></tr></thead><tbody><tr><td>Y1 NOI (Feed)</td><td class="num"><span class="col-live">$180,030</span></td><td class="num"><span class="col-live">$450,075</span></td></tr>
+<tr><td>Y5 NOI (proj.)</td><td class="num">$210,640</td><td class="num">$526,601</td></tr>
+<tr><td>5-Yr Cumulative NOI</td><td class="num"><strong>$974,860</strong></td><td class="num"><strong>$2,437,149</strong></td></tr></tbody></table></div>
   <h3 class="subhead">What makes this deck stronger than June 2026</h3>
-  <div class="strengths"><div class="strength-item"><span class="idx">1</span><span>Live cabin occupancy 73.7% vs 65.0% deck assumption</span></div>
-<div class="strength-item"><span class="idx">2</span><span>148 STR listings tracked at 74.6% occupancy</span></div>
+  <div class="strengths"><div class="strength-item"><span class="idx">1</span><span>Live cabin occupancy 78.1% vs 65.0% deck assumption</span></div>
+<div class="strength-item"><span class="idx">2</span><span>158 STR listings tracked at 75.9% occupancy</span></div>
 <div class="strength-item"><span class="idx">3</span><span>Skamania treehouse $519/night live on Airbnb</span></div>
-<div class="strength-item"><span class="idx">4</span><span>Stevenson hotels 73.0% vs CoStar 66.3%</span></div>
+<div class="strength-item"><span class="idx">4</span><span>Stevenson hotels 77.5% vs CoStar 66.3%</span></div>
 <div class="strength-item"><span class="idx">5</span><span>First-pass visitor segmentation on 2.9M baseline</span></div></div>
 </section>
 

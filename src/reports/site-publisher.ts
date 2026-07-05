@@ -76,7 +76,8 @@ ul li{margin:.35rem 0}
   <p class="updated">Last refreshed: <strong>${ts}</strong></p>
 
   <div class="actions">
-    <a class="btn btn-primary" href="deck.html">Open Full Investor Deck</a>
+    <a class="btn btn-primary" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <a class="btn btn-secondary" href="deck.html">Open Full Investor Deck</a>
     <a class="btn btn-secondary" href="data.json">Download Data (JSON)</a>
   </div>
 
@@ -147,7 +148,7 @@ export function publishSite(report: DeckComparisonReport, siteUrl = "https://min
   writeFileSync(join(siteDir, "data.json"), JSON.stringify(snapshot, null, 2));
   writeFileSync(join(exportsDir, "site-data.json"), JSON.stringify(snapshot, null, 2));
 
-  console.log("  Published: site/index.html + site/deck.html + site/data.json");
+  console.log("  Published: site/index.html + site/deck.html + site/data.json (+ PDF if generated)");
 }
 
 export function writeDeployReadme(siteUrl = "https://mindmakina.com/artbliss-deck"): void {

@@ -1,7 +1,7 @@
 {
   "name": "art-bliss-research",
   "version": "0.1.0",
-  "description": "Market intelligence engine for Artbliss \u2014 Columbia Gorge cabin portfolio underwriting",
+  "description": "Market intelligence engine for Artbliss — Columbia Gorge cabin portfolio underwriting",
   "type": "module",
   "scripts": {
     "build": "tsc",
@@ -13,6 +13,7 @@
     "deploy:do": "tsx scripts/deploy-do-spaces.ts",
     "deploy:do:refresh": "tsx scripts/deploy-do-spaces.ts --refresh",
     "deploy:mindmakina": "tsx scripts/deploy-mindmakina.ts",
+    "generate-pdf": "tsx scripts/generate-deck-pdf.ts",
     "copy:site": "tsx scripts/copy-site-to-mindmakina.ts"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@aws-sdk/client-s3": "^3.1079.0",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.2",
+    "puppeteer": "^24.43.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }

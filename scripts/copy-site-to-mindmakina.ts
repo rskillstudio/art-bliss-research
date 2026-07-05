@@ -14,7 +14,13 @@ if (!existsSync(siteDir)) {
 }
 
 mkdirSync(targetDir, { recursive: true });
-for (const file of ["index.html", "deck.html", "data.json"]) {
-  cpSync(join(siteDir, file), join(targetDir, file), { force: true });
+const files = ["index.html", "deck.html", "data.json", "artbliss-investor-deck.pdf"];
+for (const file of files) {
+  const src = join(siteDir, file);
+  if (!existsSync(src)) {
+    console.warn(`skip ${file} — not found in site/`);
+    continue;
+  }
+  cpSync(src, join(targetDir, file), { force: true });
   console.log(`copied artbliss-deck/${file}`);
 }

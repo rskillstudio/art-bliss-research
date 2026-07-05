@@ -18,6 +18,7 @@ import {
 import { writeInvestorDeck } from "./reports/investor-deck.js";
 import { writeVajraEmail } from "./reports/vajra-email.js";
 import { publishSite } from "./reports/site-publisher.js";
+import { generateDeckPdf } from "./reports/generate-deck-pdf.js";
 
 const SITE_URL = process.env.ARTBLISS_SITE_URL ?? "https://mindmakina.com/artbliss-deck";
 const command = process.argv[2] ?? "all";
@@ -62,6 +63,7 @@ async function report(results?: Awaited<ReturnType<typeof runAllScrapers>>) {
   writeInvestorDeck(tierA, tierB, segmentation, comparison);
   writeVajraEmail(comparison, SITE_URL);
   publishSite(comparison, SITE_URL);
+  await generateDeckPdf().catch((err) => console.warn("  PDF generation failed:", err.message));
 
   printSummary(segmentation, tierA);
   printDeckComparisonSummary(comparison);

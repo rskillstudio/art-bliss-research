@@ -850,18 +850,43 @@ tbody tr.total td {
   backdrop-filter: blur(8px);
 }
 .print-bar strong { color: var(--cream); }
-.print-bar button {
-  background: var(--gold);
-  color: var(--forest);
-  border: none;
+.print-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.print-bar .btn {
+  display: inline-flex;
+  align-items: center;
   padding: 0.45rem 1.1rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.8rem;
   white-space: nowrap;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
 }
-.print-bar button:hover { background: var(--gold-bright); }
+.print-bar .btn-primary {
+  background: var(--gold);
+  color: var(--forest);
+}
+.print-bar .btn-primary:hover { background: var(--gold-bright); }
+.print-bar .btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(196, 165, 116, 0.45);
+}
+.print-bar .btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+.print-bar .btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
 
 /* Print / PDF: one landscape slide per page (16:9 widescreen) */
 @page {
@@ -1073,9 +1098,31 @@ export function renderInvestorDeckHtml(d: InvestorDeckData): string {
 </head>
 <body>
 <div class="print-bar" aria-label="Export controls">
-  <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape · Use <strong>Export PDF</strong> or Print → Save as PDF (margins: none, background graphics: on)</span>
-  <button type="button" onclick="window.print()">Export PDF</button>
+  <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape slides</span>
+  <div class="print-bar-actions">
+    <a class="btn btn-primary" id="download-pdf" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
+  </div>
 </div>
+<script>
+(function () {
+  var link = document.getElementById("download-pdf");
+  if (!link) return;
+  fetch("artbliss-investor-deck.pdf", { method: "HEAD" }).catch(function () {
+    link.textContent = "Generating PDF…";
+    link.removeAttribute("href");
+    link.removeAttribute("download");
+  }).then(function (res) {
+    if (!res || !res.ok) {
+      link.textContent = "PDF unavailable — use Print";
+      link.removeAttribute("href");
+      link.removeAttribute("download");
+      link.classList.remove("btn-primary");
+      link.classList.add("btn-secondary");
+    }
+  });
+})();
+</script>
 <div class="deck">
 
 <header class="cover">
