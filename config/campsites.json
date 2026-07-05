@@ -1,0 +1,82 @@
+{
+  "description": "Live campground sources \u2014 recreation.gov + Oregon Reserve America",
+  "parsing_rules": {
+    "normalize_closed_as": "closed_season",
+    "distinguish_unreleased_vs_booked": true,
+    "exclude_day_use": true,
+    "cabin_yurt_in_park_category": "Cabin",
+    "recreation_gov_booked_statuses": [
+      "Reserved",
+      "Not Available",
+      "Closed"
+    ],
+    "recreation_gov_available_statuses": [
+      "Available",
+      "Open",
+      "Walk-Up"
+    ]
+  },
+  "facilities": [
+    {
+      "facility_id": "122940",
+      "name": "Wyeth Campground",
+      "source": "recreation.gov",
+      "tier": "A",
+      "lat": 45.652,
+      "lng": -121.945,
+      "season_open": "04-01",
+      "season_close": "10-31",
+      "persons_per_site": 4
+    },
+    {
+      "facility_id": "122890",
+      "name": "Eagle Creek Campground",
+      "source": "recreation.gov",
+      "tier": "B",
+      "lat": 45.636,
+      "lng": -122.333,
+      "season_open": "04-01",
+      "season_close": "10-31",
+      "persons_per_site": 4
+    },
+    {
+      "facility_id": "402235",
+      "name": "Ainsworth State Park",
+      "source": "oregon_state_parks",
+      "contract_code": "OR",
+      "tier": "B",
+      "lat": 45.598,
+      "lng": -122.049,
+      "reserveamerica_url": "https://oregonstateparks.reserveamerica.com/camping/ainsworth-state-park/r/campgroundDetails.do?contractCode=OR&parkId=402235",
+      "season_open": "04-01",
+      "season_close": "10-31",
+      "persons_per_site": 4
+    },
+    {
+      "facility_id": "402850",
+      "name": "Viento State Park",
+      "source": "oregon_state_parks",
+      "contract_code": "OR",
+      "tier": "B",
+      "lat": 45.697,
+      "lng": -121.653,
+      "reserveamerica_url": "https://oregonstateparks.reserveamerica.com/camping/viento-state-park/r/campgroundDetails.do?contractCode=OR&parkId=402850",
+      "season_open": "04-01",
+      "season_close": "10-31",
+      "persons_per_site": 4
+    },
+    {
+      "facility_id": "402860",
+      "name": "Memaloose State Park",
+      "source": "oregon_state_parks",
+      "contract_code": "OR",
+      "tier": "B",
+      "lat": 45.535,
+      "lng": -121.315,
+      "reserveamerica_url": "https://oregonstateparks.reserveamerica.com/camping/memaloose-state-park/r/campgroundDetails.do?contractCode=OR&parkId=402860",
+      "season_open": "03-15",
+      "season_close": "11-15",
+      "persons_per_site": 4
+    }
+  ]
+}

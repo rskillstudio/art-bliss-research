@@ -1,0 +1,4 @@
+timestamp,lodging_category,geo_tier,total_units_tracked,estimated_occupancy_rate,implied_visitor_count
+2026-07-05T03:31:13.467Z,STR,B,95,75.1,62488
+2026-07-05T03:31:13.467Z,Hotel,B,180,76.8,182208
+2026-07-05T03:31:13.467Z,Campsite,B,187,68.4,180192

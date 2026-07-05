@@ -1,0 +1,40 @@
+{
+  "updated": "2026-07-05T02:23:45.618Z",
+  "discovered": [
+    {
+      "deck_name": "Skamania Lodge — Treehouses",
+      "source": "airbnb",
+      "confidence": 75,
+      "listing_id": "23005001",
+      "listing_title": "Treehouse in Stevenson",
+      "adr": 519,
+      "units": 4,
+      "matched_keywords": [
+        "treehouse",
+        "treehouse"
+      ]
+    },
+    {
+      "deck_name": "Wilder & Pine — Cabins",
+      "source": "website",
+      "confidence": 65,
+      "website_url": "https://www.wilderandpine.com/cabins",
+      "adr": 391,
+      "units": 9,
+      "matched_keywords": [
+        "website-booking-signals"
+      ]
+    },
+    {
+      "deck_name": "Tenzen Springs — Cabins",
+      "source": "website",
+      "confidence": 65,
+      "website_url": "https://www.tenzensprings.com/",
+      "adr": 332,
+      "units": 9,
+      "matched_keywords": [
+        "website-booking-signals"
+      ]
+    }
+  ]
+}

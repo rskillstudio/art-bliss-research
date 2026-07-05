@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-07-05T03:31:13.484Z",
+  "annual_visitor_baseline": 2900000,
+  "segments": [
+    {
+      "category": "Cabin",
+      "geo_tier": "A",
+      "implied_annual_visitors": 47021,
+      "share_of_baseline_pct": 1.6
+    },
+    {
+      "category": "STR",
+      "geo_tier": "A",
+      "implied_annual_visitors": 119023,
+      "share_of_baseline_pct": 4.1
+    },
+    {
+      "category": "Hotel",
+      "geo_tier": "A",
+      "implied_annual_visitors": 105177,
+      "share_of_baseline_pct": 3.6
+    },
+    {
+      "category": "Campsite",
+      "geo_tier": "A",
+      "implied_annual_visitors": 40550,
+      "share_of_baseline_pct": 1.4
+    },
+    {
+      "category": "STR",
+      "geo_tier": "B",
+      "implied_annual_visitors": 62488,
+      "share_of_baseline_pct": 2.2
+    },
+    {
+      "category": "Hotel",
+      "geo_tier": "B",
+      "implied_annual_visitors": 182208,
+      "share_of_baseline_pct": 6.3
+    },
+    {
+      "category": "Campsite",
+      "geo_tier": "B",
+      "implied_annual_visitors": 180192,
+      "share_of_baseline_pct": 6.2
+    },
+    {
+      "category": "DayTripper",
+      "geo_tier": "residual",
+      "implied_annual_visitors": 2163341,
+      "share_of_baseline_pct": 74.6
+    }
+  ],
+  "reconciliation": {
+    "accounted_visitors": 736659,
+    "day_tripper_residual": 2163341,
+    "day_tripper_share_pct": 74.6
+  },
+  "deck_benchmarks": {
+    "costar_hotel_occupancy_pct": 66.3,
+    "airdna_adr": 347,
+    "base_scenario_occupancy_pct": 65,
+    "base_scenario_adr": 347
+  }
+}

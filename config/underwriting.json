@@ -1,0 +1,100 @@
+{
+  "source": "Roam Hospitality - Artbliss Investor Underwriting Deck (June 2026)",
+  "property": {
+    "name": "Artbliss",
+    "location": "Stevenson, WA",
+    "units_today": 4,
+    "units_buildout": 10
+  },
+  "market_benchmarks_ttm": {
+    "costar_hotel_occupancy_pct": 66.3,
+    "airdna_adr": 347,
+    "airdna_revpar": 197,
+    "airdna_annual_rev_per_listing": 54300,
+    "airdna_comp_listing_count": 12
+  },
+  "seasonality": {
+    "peak": {
+      "months": [
+        6,
+        7,
+        8
+      ],
+      "adr": 361,
+      "occupancy_pct": 80.9
+    },
+    "off_peak": {
+      "months": [
+        12,
+        1,
+        2
+      ],
+      "adr": 345,
+      "occupancy_pct": 38.9
+    },
+    "shoulder": {
+      "months": [
+        3,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "adr": 341,
+      "occupancy_pct": 70.1
+    }
+  },
+  "scenarios": {
+    "conservative": {
+      "occupancy_pct": 58.0,
+      "blended_adr": 315
+    },
+    "base": {
+      "occupancy_pct": 65.0,
+      "blended_adr": 347
+    },
+    "upside": {
+      "occupancy_pct": 70.0,
+      "blended_adr": 375
+    }
+  },
+  "growth_drivers": {
+    "occupancy_annual_increase_pct": 1.5,
+    "occupancy_cap_pct": 70.0,
+    "adr_annual_increase_pct": 4.0,
+    "adr_growth_source": "AirROI Hood River (3-6% YoY)"
+  },
+  "comp_properties": [
+    {
+      "name": "Skamania Lodge \u2014 Treehouses",
+      "units": 4,
+      "avg_adr": 492,
+      "rev_per_unit_at_66pct": 119000,
+      "positioning": "Premium resort treehouse",
+      "tier": "A"
+    },
+    {
+      "name": "Wilder & Pine \u2014 Cabins",
+      "units": 9,
+      "avg_adr": 391,
+      "rev_per_unit_at_66pct": 95000,
+      "positioning": "Rustic luxury, town-adjacent",
+      "tier": "A"
+    },
+    {
+      "name": "Tenzen Springs \u2014 Cabins",
+      "units": 9,
+      "avg_adr": 332,
+      "rev_per_unit_at_66pct": 80000,
+      "positioning": "Adults-only geothermal soak",
+      "tier": "A"
+    }
+  ],
+  "inventory_weighted_avg_adr_excl_tenzen": 422,
+  "segmentation_defaults": {
+    "avg_party_size": 2.4,
+    "avg_length_of_stay_nights": 2.3,
+    "persons_per_campsite": 4
+  }
+}

@@ -1,0 +1,68 @@
+Subject: Artbliss underwriting refresh — live market data + realistic annual case (2026-07-05)
+
+Hi Vajra,
+
+Sharing an updated read on the Artbliss opportunity. We rebuilt the June 2026 Roam Hospitality investor deck using live market intelligence from Stevenson and the Columbia Gorge — Airbnb availability, hotel booking signals, recreation.gov, and auto-discovered comp properties (Skamania treehouses, Wilder & Pine, Tenzen Springs).
+
+Live dashboard: https://mindmakina.com/artbliss-deck
+Full investor deck (HTML): https://mindmakina.com/artbliss-deck/deck.html
+
+---
+
+THE HEADLINE
+
+Live Stevenson cabin occupancy is running at 78.1% vs the deck's 65% base case. Hotels are at 77.5% vs CoStar's 66.3% TTM. That supports a stronger revenue outlook — but with important caveats below.
+
+THREE CASES FOR ARTBLISS I (4 UNITS, Y1)
+
+| Case | NOI | vs Deck Base ($149,833) |
+|------|-----:|---|
+| Deck base (June 2026) | $149,833 | — |
+| Feed snapshot (flat 73.7% @ $347) | $180,030 | +20.2% |
+| Feed seasonal (recommended) | $179,255 | +19.6% |
+
+The seasonal case is the one I'd use for a realistic annual conversation. It takes the deck's peak / shoulder / off-peak shape (Jun–Aug at ~81% occ, Dec–Feb at ~39%, shoulder ~70%) and scales it to match today's live market signal. Revenue uses month-level ADR ($361 peak / $341 shoulder / $345 off-peak), not a flat $347.
+
+Artbliss II at full buildout (10 units): $448,138 NOI on the same seasonal basis.
+
+---
+
+WHAT'S BETTER THAN THE ORIGINAL DECK
+
+• Cabin and hotel occupancy both exceed deck assumptions — market demand looks healthy, not soft.
+• Feed-anchored Artbliss I room revenue is $395,670 vs deck $329,303 (+20.2%).
+• Skamania treehouse comp is $519/night live on Airbnb — premium positioning in the comp set is real.
+• Implied RevPAR rises from $197 (deck) to ~$256 at feed occupancy.
+
+---
+
+CAVEATS (PLEASE READ)
+
+1. Snapshot vs. trailing twelve months. The feed reflects roughly a 30-day window (2026-07-05). The deck used AirDNA/CoStar TTM data. If we're in peak Gorge season, the raw snapshot may overstate a full year — that's why the seasonal case above matters.
+
+2. ADR still partly anchored to the deck. Artbliss revenue in the flat feed case uses $347 ADR (AirDNA TTM). We have live Airbnb ADR on Skamania ($519) but haven't yet blended live ADR across the full comp set into the base case. There may be additional upside if Artbliss pricing tracks premium comps.
+
+3. Different methodology than AirDNA. The deck curated 12 listings; our feed tracks ~150 Airbnb listings in Tier A Stevenson. Directionally useful, not apples-to-apples with Brandon's AirDNA dashboard.
+
+4. Occupancy is inferred from availability scrapes — not property P&Ls. Hotel and website comp signals are proxies. recreation.gov and OR parks cover campsites only.
+
+5. Visitor segmentation is preliminary. ~74.6% of the 2.9M annual visitors show as "day trippers" because we haven't fully mapped overnight inventory across the Gorge. Don't read that as "no lodging demand."
+
+6. Seasonal scaling is modeled, not measured. We apply a uniform uplift to the deck's seasonal shape based on today's snapshot. Month-by-month feed validation is the next step.
+
+7. OpEx unchanged. All NOI figures use the deck's 45.5% margin. No change to management, cleaning, or tax assumptions.
+
+---
+
+BOTTOM LINE FOR YOU
+
+Yes — the live feed supports a better outlook than the June deck's base case, especially on occupancy. I'd underwrite Artbliss I closer to $179,255 NOI (seasonal) than $149,833 (deck base), while keeping the deck's conservative scenario as a stress test for winter softness and financing.
+
+Happy to walk through the dashboard or the full deck together.
+
+Best,
+[Your name]
+
+---
+Data as of 2026-07-05 · Refreshed via Art Bliss Market Intelligence Engine
+Original deck: Roam Hospitality Investor Underwriting (June 2026)

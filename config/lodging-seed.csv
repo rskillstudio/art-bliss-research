@@ -1,0 +1,8 @@
+name,category,tier,lat,lng,zip,town,source,deck_comp,units,notes
+Artbliss,Cabin,A,45.695,-121.885,98648,Stevenson,portfolio,true,4,Subject property
+Skamania Lodge Treehouses,Cabin,A,45.712,-121.901,98610,Carson,auto_discover,true,4,Premium resort treehouse
+Wilder and Pine,Cabin,A,45.697,-121.884,98648,Stevenson,auto_discover,true,9,Rustic luxury town-adjacent
+Tenzen Springs,Cabin,A,45.701,-121.878,98648,Stevenson,auto_discover,true,9,Adults-only geothermal soak
+Skamania Lodge,Hotel,A,45.712,-121.901,98610,Carson,hotel_scrape,false,80,CoStar Stevenson submarket anchor
+Best Western Plus Hood River Inn,Hotel,B,45.712,-121.521,97031,Hood River,hotel_scrape,false,60,Cross-river hotel supply
+Columbia Gorge Hotel,Hotel,B,45.682,-121.621,97031,Hood River,hotel_scrape,false,40,Historic gorge hotel

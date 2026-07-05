@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Artbliss Investor Package — Live Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1a2e22;
+  --forest-mid: #243d2e;
+  --forest-light: #2f4f3a;
+  --cream: #f4efe6;
+  --cream-muted: #c8c0b4;
+  --gold: #c4a574;
+  --gold-bright: #d4b88a;
+  --sage: #7a9b82;
+  --river: #5a8a9a;
+  --live: #8ec4a0;
+  --slide-pad: clamp(2rem, 5vw, 4rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--forest);
+  color: var(--cream);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+a { color: var(--gold-bright); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.deck { max-width: 1200px; margin: 0 auto; }
+
+/* Cover */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--slide-pad);
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(90, 138, 154, 0.12), transparent),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(196, 165, 116, 0.08), transparent),
+    var(--forest);
+  border-bottom: 1px solid rgba(196, 165, 116, 0.2);
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.brand-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cover h1 {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+
+.cover .subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--cream-muted);
+  font-weight: 300;
+  max-width: 36rem;
+  margin-bottom: 3rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: rgba(196, 165, 116, 0.15);
+  border: 1px solid rgba(196, 165, 116, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 56rem;
+}
+
+.meta-cell {
+  background: rgba(36, 61, 46, 0.6);
+  padding: 1.1rem 1.25rem;
+}
+
+.meta-cell .label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+
+.meta-cell .value {
+  font-size: 0.95rem;
+  color: var(--cream);
+}
+
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+  margin-top: 3rem;
+  max-width: 56rem;
+}
+
+.kpi {
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.kpi .num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  color: var(--live);
+  line-height: 1.1;
+}
+
+.kpi .lbl {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  margin-top: 0.25rem;
+}
+
+/* Sections */
+.slide {
+  padding: var(--slide-pad);
+  border-bottom: 1px solid rgba(196, 165, 116, 0.12);
+}
+
+.slide:nth-child(even) {
+  background: rgba(36, 61, 46, 0.35);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.section-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--gold);
+  opacity: 0.7;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.section-head h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--cream);
+}
+
+.subhead {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  color: var(--gold-bright);
+  margin: 1.75rem 0 1rem;
+}
+
+.subhead:first-of-type { margin-top: 0; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(196, 165, 116, 0.15);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--gold-bright);
+}
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+thead th {
+  text-align: left;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(196, 165, 116, 0.25);
+  font-weight: 500;
+}
+
+thead th.num { text-align: right; }
+
+tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--cream);
+}
+
+tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+tbody tr.primary {
+  background: rgba(142, 196, 160, 0.08);
+}
+
+tbody tr.primary td { color: var(--live); font-weight: 500; }
+
+tbody tr.total {
+  background: rgba(196, 165, 116, 0.08);
+}
+
+tbody tr.total td {
+  font-weight: 600;
+  color: var(--gold-bright);
+  border-bottom: none;
+}
+
+.col-live { color: var(--live) !important; font-weight: 500; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(142, 196, 160, 0.15);
+  color: var(--live);
+  border: 1px solid rgba(142, 196, 160, 0.3);
+}
+
+.badge.gold {
+  background: rgba(196, 165, 116, 0.15);
+  color: var(--gold-bright);
+  border-color: rgba(196, 165, 116, 0.3);
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--cream-muted);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.bullet-list {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.bullet-list li {
+  padding: 0.45rem 0 0.45rem 1.25rem;
+  position: relative;
+  color: var(--cream-muted);
+  font-size: 0.9rem;
+}
+
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.bullet-list li strong { color: var(--cream); }
+
+.discovery-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.discovery-list li {
+  font-size: 0.82rem;
+  color: var(--cream-muted);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.strengths {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.strength-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  background: rgba(196, 165, 116, 0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9rem;
+  color: var(--cream-muted);
+}
+
+.strength-item .idx {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.footer {
+  padding: 2rem var(--slide-pad);
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--cream-muted);
+  opacity: 0.7;
+}
+
+@media print {
+  body { background: white; color: #1a2e22; }
+  .cover { min-height: auto; page-break-after: always; }
+  .slide { page-break-inside: avoid; border-color: #ddd; }
+  .slide:nth-child(even) { background: #f9f7f4; }
+  .section-num, .brand-label, thead th { color: #8a7348; }
+  .col-live, .kpi .num, tbody tr.primary td { color: #2d6a4f; }
+  tbody td, .bullet-list li, .note { color: #333; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<header class="cover">
+  <div class="brand-row">
+    <div class="brand-mark">A</div>
+    <div class="brand-label">Roam Hospitality · Live Intelligence</div>
+  </div>
+  <h1>Artbliss Investor Package</h1>
+  <p class="subtitle">A Columbia Gorge Cabin Portfolio — feed-anchored underwriting with live market data</p>
+  <div class="meta-grid">
+    <div class="meta-cell"><div class="label">Location</div><div class="value">Stevenson, WA — Bridge of the Gods</div></div>
+    <div class="meta-cell"><div class="label">Units Today</div><div class="value">4 · Artbliss I (in operation)</div></div>
+    <div class="meta-cell"><div class="label">Full Buildout</div><div class="value">10 units · Artbliss II</div></div>
+    <div class="meta-cell"><div class="label">Data As Of</div><div class="value">2026-07-05</div></div>
+    <div class="meta-cell"><div class="label">Intelligence</div><div class="value">Airbnb · Comps · CoStar · recreation.gov</div></div>
+  </div>
+  <div class="kpi-strip">
+    <div class="kpi"><div class="num">$180,030</div><div class="lbl">Artbliss I Y1 NOI</div></div>
+    <div class="kpi"><div class="num">78.1%</div><div class="lbl">Live Cabin Occ</div></div>
+    <div class="kpi"><div class="num">+20.2%</div><div class="lbl">Rev vs Deck Base</div></div>
+    <div class="kpi"><div class="num">$271</div><div class="lbl">Implied RevPAR</div></div>
+  </div>
+</header>
+
+<section class="slide" id="s01">
+  <div class="section-head"><span class="section-num">01</span><h2>The Opportunity</h2></div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Artbliss I — In Operation (4 units)</h3>
+      <div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th class="num">Original Deck</th><th class="num">Feed-Anchored (Live)</th></tr></thead>
+<tbody><tr><td>Y1 Room Revenue</td><td class="num">$329,303</td><td class="num col-live">$395,670</td></tr>
+<tr><td>Y1 NOI</td><td class="num">$149,749</td><td class="num col-live">$180,030</td></tr>
+<tr><td>NOI Margin</td><td class="num">45.5%</td><td class="num col-live">45.5%</td></tr></tbody></table></div>
+      <ul class="bullet-list">
+        <li>Live Stevenson cabin occupancy <strong>78.1%</strong> vs deck base <strong>65.0%</strong> (+13.1 pp)</li>
+        <li>Cash-flowing today with established guest base and 5-star reviews</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Artbliss II — Full Buildout (10 units)</h3>
+      <div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th class="num">Original Deck</th><th class="num">Feed-Anchored (Live)</th></tr></thead>
+<tbody><tr><td>Y1 Room Revenue</td><td class="num">$823,258</td><td class="num col-live">$989,176</td></tr>
+<tr><td>Y1 NOI</td><td class="num">$374,351</td><td class="num col-live">$450,075</td></tr></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s02">
+  <div class="section-head"><span class="section-num">02</span><h2>Market — Live Intelligence</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Metric</th><th class="num">Prior Deck</th><th class="num">Live Feed (Tier A)</th></tr></thead><tbody><tr><td>Hotel Occupancy</td><td class="num">CoStar 66.3% TTM</td><td class="num"><span class="col-live">77.5%</span></td></tr>
+<tr><td>Cabin Occupancy</td><td class="num">AirDNA anchor 65.0%</td><td class="num"><span class="col-live">78.1%</span></td></tr>
+<tr><td>STR Occupancy</td><td class="num">—</td><td class="num"><span class="col-live">75.5%</span> (155 listings)</td></tr>
+<tr><td>Implied RevPAR</td><td class="num">$197</td><td class="num"><span class="col-live">$271</span></td></tr>
+<tr><td>Peak Season (deck ref.)</td><td class="num">80.9% occ / $361 ADR</td><td class="num">Live snapshot ~78.1%</td></tr></tbody></table></div>
+</section>
+
+<section class="slide" id="s03">
+  <div class="section-head"><span class="section-num">03</span><h2>Comp Properties — Auto-Discovered</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Property</th><th class="num">Units</th><th class="num">Deck ADR</th><th class="num">Live ADR</th><th class="num">Source</th><th class="num">Rev/Unit</th></tr></thead><tbody><tr><td>Skamania Lodge — Treehouses</td><td class="num">4</td><td class="num">$492</td><td class="num"><span class="col-live">$519</span></td><td class="num"><span class="badge">Airbnb live</span></td><td class="num">$140,252</td></tr>
+<tr><td>Wilder &amp; Pine — Cabins</td><td class="num">9</td><td class="num">$391</td><td class="num"><span class="col-live">$391</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$111,460</td></tr>
+<tr><td>Tenzen Springs — Cabins</td><td class="num">9</td><td class="num">$332</td><td class="num"><span class="col-live">$332</span></td><td class="num"><span class="badge gold">Website proxy</span></td><td class="num">$94,642</td></tr></tbody></table></div>
+  <ul class="discovery-list"><li>Skamania Lodge — Treehouses: Airbnb #23005001 &quot;Treehouse in Stevenson&quot; @ $519/night</li>
+<li>Wilder & Pine — Cabins: <a href="https://www.wilderandpine.com/cabins" target="_blank" rel="noopener">https://www.wilderandpine.com/cabins</a></li>
+<li>Tenzen Springs — Cabins: <a href="https://www.tenzensprings.com/" target="_blank" rel="noopener">https://www.tenzensprings.com/</a></li></ul>
+</section>
+
+<section class="slide" id="s04">
+  <div class="section-head"><span class="section-num">04</span><h2>Underwriting Scenarios — Artbliss I (Y1)</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Scenario</th><th class="num">Occ</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Conservative (deck)</td><td class="num">58.0%</td><td class="num">$315</td><td class="num">$266,742</td><td class="num">$121,368</td></tr>
+<tr><td>Base (deck)</td><td class="num">65.0%</td><td class="num">$347</td><td class="num">$329,303</td><td class="num">$149,833</td></tr>
+<tr><td>Upside (deck)</td><td class="num">70.0%</td><td class="num">$375</td><td class="num">$383,250</td><td class="num">$174,379</td></tr>
+<tr class="primary"><td><strong>Feed-Anchored Base ← Primary</strong></td><td class="num"><strong>78.1%</strong></td><td class="num"><strong>$347</strong></td><td class="num"><strong>$395,670</strong></td><td class="num"><strong>$180,030</strong></td></tr>
+<tr><td>Feed Upside</td><td class="num">78.1%</td><td class="num">$375</td><td class="num">$427,598</td><td class="num">$194,557</td></tr></tbody></table></div>
+</section>
+
+<section class="slide" id="s04b">
+  <div class="section-head"><span class="section-num">04b</span><h2>Seasonally Adjusted Outlook</h2></div>
+  <p class="note" style="margin-bottom:1.25rem;font-style:normal;">Recommended annual case — deck peak / shoulder / off-peak shape scaled to live occupancy, month-level ADR.</p>
+  <div class="table-wrap"><table><thead><tr><th>Case</th><th class="num">Blended Occ</th><th class="num">Blended ADR</th><th class="num">Artbliss I NOI</th></tr></thead><tbody><tr><td>Deck base (flat)</td><td class="num">65.1%</td><td class="num">$348</td><td class="num">$149,833</td></tr>
+<tr><td>Feed snapshot (flat $347)</td><td class="num">78.1%</td><td class="num">$347</td><td class="num">$180,030</td></tr>
+<tr><td>Feed seasonal ← recommended</td><td class="num"><strong>77.6%</strong></td><td class="num"><strong>$348</strong></td><td class="num"><strong>$179,255</strong></td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Season</th><th class="num">Months</th><th class="num">Feed-Adj Occ</th><th class="num">ADR</th></tr></thead><tbody><tr><td>Peak</td><td class="num">3</td><td class="num">95.0%</td><td class="num">$361</td></tr>
+<tr><td>Shoulder</td><td class="num">6</td><td class="num">84.1%</td><td class="num">$341</td></tr>
+<tr><td>Off-Peak</td><td class="num">3</td><td class="num">46.6%</td><td class="num">$345</td></tr></tbody></table></div>
+  <div class="kpi-strip" style="margin-top:1.5rem">
+    <div class="kpi"><div class="num">$448,138</div><div class="lbl">Artbliss II Seasonal NOI</div></div>
+  </div>
+</section>
+
+<section class="slide" id="s05">
+  <div class="section-head"><span class="section-num">05</span><h2>Artbliss I Stabilized Y1</h2></div>
+  <div class="kpi-strip">
+    <div class="kpi"><div class="num">$395,670</div><div class="lbl">Room Revenue (+20.2% vs deck)</div></div>
+    <div class="kpi"><div class="num">$180,030</div><div class="lbl">Net Operating Income</div></div>
+    <div class="kpi"><div class="num">45.5%</div><div class="lbl">NOI Margin</div></div>
+  </div>
+</section>
+
+<section class="slide" id="s06">
+  <div class="section-head"><span class="section-num">06</span><h2>Artbliss II Stabilized Y1</h2></div>
+  <div class="kpi-strip">
+    <div class="kpi"><div class="num">$989,176</div><div class="lbl">Room Revenue</div></div>
+    <div class="kpi"><div class="num">$450,075</div><div class="lbl">Net Operating Income</div></div>
+  </div>
+</section>
+
+<section class="slide" id="s07">
+  <div class="section-head"><span class="section-num">07</span><h2>5-Year Horizon — Artbliss I</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$395,670</td><td class="num">$180,030</td></tr>
+<tr><td>Y2</td><td class="num">$361</td><td class="num">$411,634</td><td class="num">$187,293</td></tr>
+<tr><td>Y3</td><td class="num">$375</td><td class="num">$427,598</td><td class="num">$194,557</td></tr>
+<tr><td>Y4</td><td class="num">$390</td><td class="num">$444,701</td><td class="num">$202,339</td></tr>
+<tr><td>Y5</td><td class="num">$406</td><td class="num">$462,946</td><td class="num">$210,640</td></tr>
+<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$974,860</strong></td></tr></tbody></table></div>
+  <p class="note">4% annual ADR growth at feed-anchored 78.1% occupancy.</p>
+</section>
+
+<section class="slide" id="s08">
+  <div class="section-head"><span class="section-num">08</span><h2>5-Year Horizon — Artbliss II</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Year</th><th class="num">ADR</th><th class="num">Room Revenue</th><th class="num">NOI</th></tr></thead><tbody><tr><td>Y1</td><td class="num">$347</td><td class="num">$989,176</td><td class="num">$450,075</td></tr>
+<tr><td>Y2</td><td class="num">$361</td><td class="num">$1,029,085</td><td class="num">$468,234</td></tr>
+<tr><td>Y3</td><td class="num">$375</td><td class="num">$1,068,994</td><td class="num">$486,392</td></tr>
+<tr><td>Y4</td><td class="num">$390</td><td class="num">$1,111,754</td><td class="num">$505,848</td></tr>
+<tr><td>Y5</td><td class="num">$406</td><td class="num">$1,157,364</td><td class="num">$526,601</td></tr>
+<tr class="total"><td>5-Yr Cumulative</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$2,437,149</strong></td></tr></tbody></table></div>
+</section>
+
+<section class="slide" id="s09">
+  <div class="section-head"><span class="section-num">09</span><h2>Gorge Visitor Segmentation</h2></div>
+  <p class="subhead">Baseline: 2,900,000 annual visitors</p>
+  <div class="table-wrap"><table><thead><tr><th>Segment</th><th class="num">Tier</th><th class="num">Visitors</th><th class="num">Share</th></tr></thead><tbody><tr><td>Cabin</td><td class="num">A</td><td class="num">47,021</td><td class="num">1.6%</td></tr>
+<tr><td>STR</td><td class="num">A</td><td class="num">119,023</td><td class="num">4.1%</td></tr>
+<tr><td>Hotel</td><td class="num">A</td><td class="num">105,177</td><td class="num">3.6%</td></tr>
+<tr><td>Campsite</td><td class="num">A</td><td class="num">40,550</td><td class="num">1.4%</td></tr>
+<tr><td>STR</td><td class="num">B</td><td class="num">62,488</td><td class="num">2.2%</td></tr>
+<tr><td>Hotel</td><td class="num">B</td><td class="num">182,208</td><td class="num">6.3%</td></tr>
+<tr><td>Campsite</td><td class="num">B</td><td class="num">180,192</td><td class="num">6.2%</td></tr>
+<tr><td>DayTripper</td><td class="num">residual</td><td class="num">2,163,341</td><td class="num">74.6%</td></tr></tbody></table></div>
+  <p class="note">Preliminary — expand inventory tracking to tighten day-tripper estimate.</p>
+</section>
+
+<section class="slide" id="s10">
+  <div class="section-head"><span class="section-num">10</span><h2>OpEx — Deck Structure, Feed Revenue</h2></div>
+  <p style="color:var(--cream-muted);font-size:0.95rem;max-width:40rem;">Variable lines scale with feed revenue ($395,670 Y1 Artbliss I). Same drivers as original deck: 10% management, 5% marketing, cleaning salary/turn model, flat tax and insurance.</p>
+</section>
+
+<section class="slide" id="s11">
+  <div class="section-head"><span class="section-num">11</span><h2>Assumptions &amp; Sources</h2></div>
+  <div class="table-wrap"><table><thead><tr><th>Data</th><th class="num">Source</th></tr></thead><tbody><tr><td>Live occupancy</td><td class="num">Airbnb scrape, hotel pages, recreation.gov, OR parks</td></tr>
+<tr><td>Comp discovery</td><td class="num">Auto-match + wilderandpine.com, tenzensprings.com, skamania.com</td></tr>
+<tr><td>ADR bridge</td><td class="num">AirDNA $347 TTM + live Airbnb (Skamania $519)</td></tr>
+<tr><td>Hotel benchmark</td><td class="num">CoStar Stevenson 66.3%</td></tr>
+<tr><td>Unit economics</td><td class="num">Roam Hospitality deck (June 2026)</td></tr></tbody></table></div>
+</section>
+
+<section class="slide" id="s12">
+  <div class="section-head"><span class="section-num">12</span><h2>Summary</h2></div>
+  <div class="table-wrap"><table><thead><tr><th></th><th class="num">Artbliss I (4)</th><th class="num">Artbliss II (10)</th></tr></thead><tbody><tr><td>Y1 NOI (Feed)</td><td class="num"><span class="col-live">$180,030</span></td><td class="num"><span class="col-live">$450,075</span></td></tr>
+<tr><td>Y5 NOI (proj.)</td><td class="num">$210,640</td><td class="num">$526,601</td></tr>
+<tr><td>5-Yr Cumulative NOI</td><td class="num"><strong>$974,860</strong></td><td class="num"><strong>$2,437,149</strong></td></tr></tbody></table></div>
+  <h3 class="subhead">What makes this deck stronger than June 2026</h3>
+  <div class="strengths"><div class="strength-item"><span class="idx">1</span><span>Live cabin occupancy 78.1% vs 65.0% deck assumption</span></div>
+<div class="strength-item"><span class="idx">2</span><span>155 STR listings tracked at 75.5% occupancy</span></div>
+<div class="strength-item"><span class="idx">3</span><span>Skamania treehouse $519/night live on Airbnb</span></div>
+<div class="strength-item"><span class="idx">4</span><span>Stevenson hotels 77.5% vs CoStar 66.3%</span></div>
+<div class="strength-item"><span class="idx">5</span><span>First-pass visitor segmentation on 2.9M baseline</span></div></div>
+</section>
+
+<footer class="footer">Art Bliss Market Intelligence Engine · Data as of 2026-07-05 · Re-run npm run run to refresh</footer>
+</div>
+</body>
+</html>

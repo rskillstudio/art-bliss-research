@@ -1,0 +1,5 @@
+timestamp,lodging_category,geo_tier,total_units_tracked,estimated_occupancy_rate,implied_visitor_count
+2026-07-05T03:31:13.448Z,Cabin,A,45,78.1,47021
+2026-07-05T03:31:13.448Z,STR,A,155,75.5,119023
+2026-07-05T03:31:13.448Z,Hotel,A,80,77.5,105177
+2026-07-05T03:31:13.448Z,Campsite,A,41,70,40550

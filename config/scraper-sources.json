@@ -1,0 +1,98 @@
+{
+  "airbnb_searches": [
+    {
+      "label": "Stevenson Tier A",
+      "tier": "A",
+      "query": "Stevenson--WA--United-States",
+      "lat": 45.695,
+      "lng": -121.885,
+      "radius_miles": 12
+    },
+    {
+      "label": "Hood River Tier B",
+      "tier": "B",
+      "query": "Hood-River--OR--United-States",
+      "lat": 45.708,
+      "lng": -121.521,
+      "radius_miles": 35
+    }
+  ],
+  "hotel_searches": [
+    {
+      "name": "Skamania Lodge",
+      "tier": "A",
+      "url": "https://www.skamania.com/stay/",
+      "rooms_estimate": 80
+    },
+    {
+      "name": "Columbia Gorge Hotel",
+      "tier": "B",
+      "url": "https://www.columbiagorgehotel.com/",
+      "rooms_estimate": 40
+    },
+    {
+      "name": "Best Western Plus Hood River Inn",
+      "tier": "B",
+      "url": "https://www.hoodriverinn.com/",
+      "rooms_estimate": 60
+    }
+  ],
+  "snapshot_days": 30,
+  "request_delay_ms": 500,
+  "use_playwright": false,
+  "fallback_to_simulation": true,
+  "comp_discovery": {
+    "enabled": true,
+    "match_score_threshold": 55,
+    "comps": [
+      {
+        "deck_name": "Skamania Lodge \u2014 Treehouses",
+        "keywords": [
+          "skamania",
+          "treehouse"
+        ],
+        "search_queries": [
+          "Skamania treehouse",
+          "Skamania Lodge treehouse"
+        ],
+        "website_urls": [
+          "https://www.skamania.com/stay/treehouses/"
+        ],
+        "units": 4,
+        "tier": "A"
+      },
+      {
+        "deck_name": "Wilder & Pine \u2014 Cabins",
+        "keywords": [
+          "wilder",
+          "pine"
+        ],
+        "search_queries": [
+          "Wilder and Pine",
+          "Wilder Pine Stevenson cabin"
+        ],
+        "website_urls": [
+          "https://www.wilderandpine.com/cabins",
+          "https://www.wilderandpine.com/"
+        ],
+        "units": 9,
+        "tier": "A"
+      },
+      {
+        "deck_name": "Tenzen Springs \u2014 Cabins",
+        "keywords": [
+          "tenzen"
+        ],
+        "search_queries": [
+          "Tenzen Springs",
+          "Tenzen Springs Stevenson"
+        ],
+        "website_urls": [
+          "https://www.tenzensprings.com/"
+        ],
+        "units": 9,
+        "tier": "A"
+      }
+    ]
+  }
+}

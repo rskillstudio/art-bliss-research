@@ -1,0 +1,82 @@
+{
+  "market_name": "Artbliss \u2014 Stevenson / Bridge of the Gods",
+  "description": "Primary scrape zone matches deck comp set (boutique cabins, Stevenson submarket). Extended zone fills 2.9M annual visitor reconciliation only.",
+  "annual_visitor_baseline": 2900000,
+  "tiers": {
+    "A": {
+      "label": "primary",
+      "purpose": "Direct underwriting \u2014 same stay type and immediate vicinity as Artbliss deck",
+      "center": {
+        "lat": 45.695,
+        "lng": -121.885,
+        "label": "Stevenson, WA"
+      },
+      "radius_miles": 12,
+      "zips": [
+        "98648",
+        "98610",
+        "97014"
+      ],
+      "towns": [
+        "Stevenson",
+        "Carson",
+        "Cascade Locks"
+      ],
+      "lodging_categories": [
+        "Cabin",
+        "STR"
+      ],
+      "notes": "Skamania Lodge, Wilder & Pine, Tenzen Springs comp radius. CoStar Stevenson hotel submarket."
+    },
+    "B": {
+      "label": "extended",
+      "purpose": "Visitor reconciliation \u2014 account for remaining 2.9M annual visitors not captured in Tier A",
+      "center": {
+        "lat": 45.708,
+        "lng": -121.521,
+        "label": "Hood River corridor"
+      },
+      "radius_miles": 35,
+      "zips": [
+        "97031",
+        "98672",
+        "98605",
+        "97040",
+        "97058"
+      ],
+      "towns": [
+        "Hood River",
+        "White Salmon",
+        "Bingen",
+        "Mosier",
+        "The Dalles"
+      ],
+      "lodging_categories": [
+        "Hotel",
+        "STR",
+        "Cabin",
+        "Campsite"
+      ],
+      "notes": "Cross-river demand, gorge-wide hotels/campsites. Use only to fill visitor segmentation gaps."
+    }
+  },
+  "exclude": {
+    "zips": [
+      "97048",
+      "972",
+      "98660",
+      "98661"
+    ],
+    "notes": "Portland/Vancouver metro fringe \u2014 dilutes hyper-local Stevenson signal"
+  },
+  "deck_references": {
+    "location": "Stevenson, WA \u2014 Bridge of the Gods gateway",
+    "costar_hotel_submarket": "Stevenson",
+    "airdna_comp_listings": 12,
+    "property_comps": [
+      "Skamania Lodge Treehouses",
+      "Wilder & Pine",
+      "Tenzen Springs"
+    ]
+  }
+}
