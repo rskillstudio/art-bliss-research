@@ -1066,7 +1066,7 @@ function dataTable(
   return `<div class="table-wrap"><table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
 }
 
-export function renderInvestorDeckHtml(d: InvestorDeckData): string {
+export function renderInvestorDeckHtml(d: InvestorDeckData, pdfHref = "artbliss-investor-deck.pdf"): string {
   const deltaPct = `+${d.artI.revenue_delta_pct}%`;
   const occDeltaStr = `+${d.occDelta.toFixed(1)} pp`;
 
@@ -1154,11 +1154,11 @@ export function renderInvestorDeckHtml(d: InvestorDeckData): string {
 <div class="print-bar" aria-label="Export controls">
   <span><strong>Artbliss Investor Deck</strong> · 16:9 landscape slides</span>
   <div class="print-bar-actions">
-    <a class="btn btn-primary" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <a class="btn btn-primary" href="${pdfHref}" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
     <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
   </div>
 </div>
-<a class="fab-download" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf" aria-label="Download deck as PDF">
+<a class="fab-download" href="${pdfHref}" download="Artbliss-Investor-Deck.pdf" aria-label="Download deck as PDF">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l4-4m-4 4L8 11"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
   Download PDF
 </a>
@@ -1166,7 +1166,7 @@ export function renderInvestorDeckHtml(d: InvestorDeckData): string {
 
 <header class="cover">
   <div class="cover-actions">
-    <a class="btn-download" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">↓ Download PDF</a>
+    <a class="btn-download" href="${pdfHref}" download="Artbliss-Investor-Deck.pdf">↓ Download PDF</a>
   </div>
   <div class="brand-row">
     <div class="brand-mark">A</div>
@@ -1326,16 +1326,29 @@ export function renderInvestorDeck(
   return renderInvestorDeckMarkdown(buildInvestorDeckData(tierA, segmentation, comparison));
 }
 
+function pdfHrefFromSiteUrl(siteUrl?: string): string {
+  if (!siteUrl) return "artbliss-investor-deck.pdf";
+  const base = siteUrl.replace(/\/$/, "");
+  try {
+    const path = new URL(base).pathname.replace(/\/$/, "") || "";
+    return `${path}/artbliss-investor-deck.pdf`;
+  } catch {
+    return "artbliss-investor-deck.pdf";
+  }
+}
+
 export function writeInvestorDeck(
   tierA: CategoryMetrics[],
   tierB: CategoryMetrics[],
   segmentation: SegmentationReport,
-  comparison: DeckComparisonReport
+  comparison: DeckComparisonReport,
+  siteUrl?: string
 ): void {
   mkdirSync(exportsDir, { recursive: true });
   const data = buildInvestorDeckData(tierA, segmentation, comparison);
+  const pdfHref = pdfHrefFromSiteUrl(siteUrl);
   writeFileSync(join(exportsDir, "artbliss-investor-deck.md"), renderInvestorDeckMarkdown(data));
-  writeFileSync(join(exportsDir, "artbliss-investor-deck.html"), renderInvestorDeckHtml(data));
+  writeFileSync(join(exportsDir, "artbliss-investor-deck.html"), renderInvestorDeckHtml(data, pdfHref));
   console.log("  Written: data/exports/artbliss-investor-deck.md");
   console.log("  Written: data/exports/artbliss-investor-deck.html");
 }

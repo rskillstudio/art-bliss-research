@@ -60,10 +60,15 @@ async function report(results?: Awaited<ReturnType<typeof runAllScrapers>>) {
   writeJsonReport(segmentation, "visitor-segmentation.json");
 
   const comparison = writeDeckComparisonReport(tierA, tierB, segmentation);
-  writeInvestorDeck(tierA, tierB, segmentation, comparison);
+  writeInvestorDeck(tierA, tierB, segmentation, comparison, SITE_URL);
   writeVajraEmail(comparison, SITE_URL);
   publishSite(comparison, SITE_URL);
-  await generateDeckPdf().catch((err) => console.warn("  PDF generation failed:", err.message));
+  const pdfOk = await generateDeckPdf();
+  if (!pdfOk) {
+    throw new Error(
+      "PDF generation failed — Download PDF would be broken. Fix puppeteer / site/deck.html and re-run."
+    );
+  }
 
   printSummary(segmentation, tierA);
   printDeckComparisonSummary(comparison);

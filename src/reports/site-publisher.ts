@@ -7,6 +7,18 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const exportsDir = join(root, "data", "exports");
 const siteDir = join(root, "site");
 
+/** Root-absolute path so downloads work even when URL has no trailing slash. */
+function assetUrl(siteUrl: string, file: string): string {
+  const base = siteUrl.replace(/\/$/, "");
+  try {
+    const path = new URL(base).pathname.replace(/\/$/, "") || "";
+    return `${path}/${file}`;
+  } catch {
+    return file;
+  }
+}
+
+
 function fmtUsd(n: number): string {
   return `$${Math.round(n).toLocaleString()}`;
 }
@@ -76,14 +88,14 @@ ul li{margin:.35rem 0}
   <p class="updated">Last refreshed: <strong>${ts}</strong></p>
 
   <div class="download-banner">
-    <a class="btn btn-primary btn-lg" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">↓ Download Investor Deck (PDF)</a>
+    <a class="btn btn-primary btn-lg" href="${assetUrl(siteUrl, "artbliss-investor-deck.pdf")}" download="Artbliss-Investor-Deck.pdf">↓ Download Investor Deck (PDF)</a>
     <span class="download-hint">16:9 landscape · ${ts}</span>
   </div>
 
   <div class="actions">
-    <a class="btn btn-primary" href="artbliss-investor-deck.pdf" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
-    <a class="btn btn-secondary" href="deck.html">Open Full Investor Deck</a>
-    <a class="btn btn-secondary" href="data.json">Download Data (JSON)</a>
+    <a class="btn btn-primary" href="${assetUrl(siteUrl, "artbliss-investor-deck.pdf")}" download="Artbliss-Investor-Deck.pdf">Download PDF</a>
+    <a class="btn btn-secondary" href="${assetUrl(siteUrl, "deck.html")}">Open Full Investor Deck</a>
+    <a class="btn btn-secondary" href="${assetUrl(siteUrl, "data.json")}">Download Data (JSON)</a>
   </div>
 
   <div class="grid">
